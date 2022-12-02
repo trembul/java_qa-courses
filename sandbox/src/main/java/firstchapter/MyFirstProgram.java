@@ -5,23 +5,16 @@ public class MyFirstProgram {
     hello("world");
     hello("user");
 
-    double len = 3.5;
-    System.out.println(area(len));
+    Square s = new Square(5);
+    System.out.println(s.area());
 
-    double x = 12;
-    double y = 4.9;
-    System.out.println(areaRectangle(x,y));
+    Rectangle r = new Rectangle(5, 2);
+    System.out.println(r.areaRectangle());
   }
 
   public static void hello(String somebody){
     System.out.println("Hello, " + somebody + "!");
   }
 
-  public static double area(double l){
-    return l * l;
-  }
 
-  public static double areaRectangle(double x, double y){
-    return x * y;
-  }
 }
