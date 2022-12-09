@@ -2,14 +2,14 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class HelperBase {
-
+public class BaseHelper {
 
     protected FirefoxDriver wd;
 
-    public HelperBase(FirefoxDriver wd) {
+    public BaseHelper(FirefoxDriver wd) {
         this.wd=wd;
     }
 
@@ -28,6 +28,15 @@ public class HelperBase {
             wd.switchTo().alert();
             return true;
         } catch (NoAlertPresentException e) {
+            return false;
+        }
+    }
+
+    private boolean isElementPresent(By by) {
+        try {
+            wd.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
             return false;
         }
     }
