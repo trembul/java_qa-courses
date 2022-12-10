@@ -16,4 +16,12 @@ public class ContactHelper extends BaseHelper {
         type(By.name("email"), contactData.getEmail());
         click(By.name("submit"));
     }
+
+    public void selectContact(){
+        click(By.name("selected[]"));
+    }
+
+    public void deleteSelectedContacts() {
+        click(By.xpath("//input[@value='Delete']"));
+    }
 }
