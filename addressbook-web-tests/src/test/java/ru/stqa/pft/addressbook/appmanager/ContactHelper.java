@@ -14,6 +14,9 @@ public class ContactHelper extends BaseHelper {
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("mobile"), contactData.getMobileNumber());
         type(By.name("email"), contactData.getEmail());
+    }
+
+    public void submitNewContactForm() {
         click(By.name("submit"));
     }
 
@@ -24,4 +27,10 @@ public class ContactHelper extends BaseHelper {
     public void deleteSelectedContacts() {
         click(By.xpath("//input[@value='Delete']"));
     }
+
+    public void initContactModification(){
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+
+    public void submitContactModification() {click(By.name("update"));}
 }
