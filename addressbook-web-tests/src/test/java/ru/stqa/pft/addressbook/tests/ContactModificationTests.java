@@ -11,7 +11,7 @@ public class ContactModificationTests extends TestBase{
         app.getContactHelper().selectContact();
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillNewContactForm(new ContactData ("George", "Foreman",
-                        "+48 256 248 747", "gforman@gmail.com"));
+                        "+48 256 248 747", "gforman@gmail.com", null), false);
         app.getContactHelper().submitContactModification();
         app.logout();
     }
