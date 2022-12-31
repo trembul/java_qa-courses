@@ -5,13 +5,11 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactCreationTests extends TestBase {
 
-  @Test
-  public void testContactCreation(){
-
-    app.getNavigationHelper().goToAddNewContactForm();
-    app.getContactHelper().fillNewContactForm(new ContactData("Role", "Cole",
-            "+48 857 999 877", "rcole@qa.com", "test1"), true);
-    app.getContactHelper().submitNewContactForm();
-    app.logout();
-  }
+    @Test
+    public void testContactCreation() {
+        app.getNavigationHelper().goToAddNewContactForm();
+        app.getContactHelper().createContact(new ContactData("Role", "Cole",
+                "+48 857 999 877", "rcole@qa.com", "test1"), true);
+        app.logout();
+    }
 }
