@@ -9,7 +9,7 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation() {
         app.getNavigationHelper().goToAddNewContactForm();
         app.getContactHelper().createContact(new ContactData("Role", "Cole",
-                "+48 857 999 877", "rcole@qa.com", "test1"), true);
+                "+48 857 999 877", "rcole@qa.com", null));
         app.logout();
     }
 }
