@@ -13,7 +13,7 @@ public class GroupData {
     private final String footer;
 
     public GroupData(String name, String header, String footer){
-        this.id = 0;
+        this.id = Integer.MAX_VALUE;
         this.name = name;
         this.header = header;
         this.footer = footer;
@@ -54,11 +54,12 @@ public class GroupData {
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
         final GroupData groupData = (GroupData) o;
-        return this.id == groupData.id && Objects.equals(this.name, groupData.name);
+        return Objects.equals(this.name, groupData.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.name);
+        return Objects.hash(this.name);
     }
+
 }
