@@ -1,10 +1,11 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BaseHelper {
 
@@ -49,5 +50,10 @@ public class BaseHelper {
         } catch (NoSuchElementException ex) {
             return false;
         }
+    }
+
+    public void waitForDynamicElement(By locator){
+        WebElement myDynamicElement = (new WebDriverWait(wd, Duration.ofSeconds(3)))
+                .until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 }

@@ -19,8 +19,6 @@ public class ContactHelper extends BaseHelper {
     public void fillNewContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("lastname"), contactData.getLastName());
-        type(By.name("mobile"), contactData.getMobileNumber());
-        type(By.name("email"), contactData.getEmail());
 
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
@@ -39,6 +37,7 @@ public class ContactHelper extends BaseHelper {
 
     public void deleteSelectedContacts() {
         click(By.xpath("//input[@value='Delete']"));
+        acceptAlert();
     }
 
     public void initContactModification(){
@@ -63,7 +62,7 @@ public class ContactHelper extends BaseHelper {
             String firstName = element.getText();
             String lastName = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-            ContactData contact = new ContactData(id, firstName, lastName, null, null, null);
+            ContactData contact = new ContactData(id, firstName, lastName);
             contacts.add(contact);
         }
         return contacts;
