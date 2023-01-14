@@ -19,14 +19,14 @@ public class NavigationHelper extends BaseHelper {
         }
     }
 
-    public void goToHomePage(){
+    public void homePage(){
         if (isElementPresent(By.id("maintable"))) {
             return;
         }
         click(By.linkText("home"));
     }
 
-    public void goToAddNewContactForm() {
+    public void newContactForm() {
         click(By.linkText("add new"));
     }
 }
