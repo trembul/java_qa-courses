@@ -4,7 +4,6 @@ import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -30,7 +29,6 @@ public class GroupCreationTests extends TestBase {
         app.group().create(group);
         assertThat(app.group().count(), equalTo(before.size()));
         Groups after = app.group().all();
-        assertThat(after.size(), equalTo(before.size()));
         assertThat(after, equalTo(before));
     }
 }
