@@ -10,7 +10,7 @@ public class ContactData {
     private String homePhone;
     private String mobilePhone;
     private String workPhone;
-
+    private String allPhones;
 
     public int getId() {
         return this.id;
@@ -75,6 +75,15 @@ public class ContactData {
         return this;
     }
 
+    public String getAllPhones() {
+        return this.allPhones;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -96,7 +105,5 @@ public class ContactData {
     public int hashCode() {
         return Objects.hash(this.id, this.firstName, this.lastName);
     }
-
-
 }
 
