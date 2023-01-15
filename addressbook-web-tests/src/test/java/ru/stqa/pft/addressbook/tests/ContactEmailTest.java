@@ -16,13 +16,17 @@ public class ContactEmailTest extends TestBase{
         app.goTo().homePage();
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-
-        assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
+        assertThat(contact.getAllEmails().trim()
+                .replaceAll(" +", ""), equalTo(mergeEmails(contactInfoFromEditForm)));
     }
 
     private String mergeEmails(ContactData contact) {
         return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
                 .stream().filter((s -> ! s.equals("")))
+                .map(ContactEmailTest :: cleaned)
                 .collect(Collectors.joining("\n"));
+    }
+    public static String cleaned(String email) {
+        return email.replaceAll("\\s", "");
     }
 }
