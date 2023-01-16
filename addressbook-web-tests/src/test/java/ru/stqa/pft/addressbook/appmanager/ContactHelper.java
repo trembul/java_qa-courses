@@ -124,4 +124,14 @@ public class ContactHelper extends BaseHelper {
         //wd.findElement(By.xpath(String.format("//input[value='%s']/../../td[8]/a", id))).click();
         //wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
     }
+
+    public ContactData infoFromDetailsView(ContactData contact){
+        initContactDetails(contact.getId());
+        String contactDetails = wd.findElement(By.xpath("//div[@id='content']")).getText();
+        return new ContactData().withId(contact.getId()).withContactDetails(contactDetails);
+    }
+
+    private void initContactDetails(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
+    }
 }
