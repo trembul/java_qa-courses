@@ -18,7 +18,7 @@ public class ContactHelper extends BaseHelper {
     public void fillNewContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("lastname"), contactData.getLastName());
-        attach(By.name("photo"), contactData.getPhoto());
+        //attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
@@ -88,11 +88,11 @@ public class ContactHelper extends BaseHelper {
             int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
             String firstName = cells.get(2).getText();
             String lastName = cells.get(1).getText();
-            String allPhones = cells.get(5).getText();
-            String allEmails = cells.get(4).getText();
-            String address = cells.get(3).getText();
+            //String allPhones = cells.get(5).getText();
+            //String allEmails = cells.get(4).getText();
+            //String address = cells.get(3).getText();
             contactCache.add(new ContactData().withId(id).withFirstName(firstName)
-                    .withLastName(lastName).withAllPhones(allPhones).withAllEmails(allEmails).withAddress(address));
+                    .withLastName(lastName));//.withAllPhones(allPhones).withAllEmails(allEmails).withAddress(address));
         }
         return new Contacts (contactCache);
     }
