@@ -45,11 +45,13 @@ public class ContactCreationTests extends TestBase {
                 before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }
 
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void testBadContactCreation() {
         Contacts before = app.contact().all();
         app.goTo().newContactForm();
-        ContactData contact = new ContactData().withFirstName("Man '").withLastName("Udt");
+        ContactData contact = new ContactData()
+                .withFirstName(app.properties.getProperty("contact.fistNameCreate") + " '")
+                .withLastName(app.properties.getProperty("contact.lastNameCreate"));
         app.contact().create(contact);
         app.goTo().homePage();
         assertThat(app.contact().count(), equalTo(before.size()));
